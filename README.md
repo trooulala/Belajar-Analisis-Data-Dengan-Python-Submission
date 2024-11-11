@@ -9,7 +9,7 @@
 1. Clone repository ke komputer lokal anda menggunakan perintah berikut:
 
    ```shell
-   git clone https://github.com/mhaidar10/Submission_Analisis_Data_Python.git
+   git clone https://github.com/trooulala/Belajar-Analisis-Data-Dengan-Python-Submission.git
    ```
 
 2. Lakukan Instalasi Library Dengan Perintah Berikut:
