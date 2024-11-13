@@ -79,6 +79,35 @@ def plot_customer_by_city(bycity_df):
     # Use Streamlit to display the plot, passing the figure explicitly
     st.pyplot(fig)  # Pass the figure object explicitly
 
+def plot_sales_by_payment(all_df):
+    """
+    Function to plot the sales by payment type as a pie chart.
+    
+    Parameters:
+    - all_df: DataFrame containing the sales data
+    """
+    # Group data by payment type and calculate total sales
+    sales_by_payment = all_df.groupby('payment_type')['price'].sum()
+
+    # Set the figure size
+    plt.figure(figsize=(8, 8))
+
+    # Plot pie chart
+    sales_by_payment.plot(kind='pie', autopct='%1.1f%%')
+
+    # Add title
+    plt.title('Most Used Payment Type', fontsize=16, fontweight='bold')
+
+    # Hide the y-label for better aesthetics
+    plt.ylabel('')
+
+    # Adjust layout for better fitting
+    plt.tight_layout()
+
+    # Show the plot in Streamlit
+    st.pyplot(plt)
+
+
 # Function to plot the revenue charts (best and worst performing products)
 def plot_best_and_worst_products(sum_order_items_df):
     # Create the figure and axes (2 subplots side by side)
@@ -134,6 +163,9 @@ def main():
 
     # Display additional information
     st.write(monthly_order)
+
+    st.write("### Most Used paymePayment Method")
+    plot_sales_by_payment(all_df)
 
     # Calculate customer count by city
     bycity_df = get_customer_by_city(all_df)
